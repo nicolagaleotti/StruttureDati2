@@ -9,7 +9,7 @@ namespace Dati_2
         static void Main(string[] args)
         {
             string file = "interi.txt";
-            List<int> votiList = new List<int>();
+            HashSet<int> votiList = new HashSet<int>();
             if(File.Exists(file))
             {
                 try
@@ -23,20 +23,12 @@ namespace Dati_2
                 } catch { }
             }
             string file2 = "interi2.txt";
-            List<int> votiList2 = new List<int>();
             try
             {
                 using (StreamWriter writer = new StreamWriter(file2))
                 {
-                    for (int i = 0; i < votiList.Count; i++)
-                    {
-                        if ( ! votiList2.Contains(votiList[i]))
-                        {
-                            writer.WriteLine(votiList[i]);
-                            votiList2.Add(votiList[i]);
-                        }
-                    }
-                        
+                    foreach(int s in votiList)
+                            writer.WriteLine(s);
                 }
             } catch { }
         }
